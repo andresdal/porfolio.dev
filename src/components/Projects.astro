@@ -1,0 +1,138 @@
+---
+import GitHub from "./icons/GitHub.astro"
+import NextJS from "./icons/NextJS.astro"
+import React from "./icons/React.astro"
+import Tailwind from "./icons/Tailwind.astro"
+import Link from "./icons/Link.astro"
+import LinkButton from "./LinkButton.astro"
+import NodeJS from "./icons/NodeJS.astro"
+import Go from "./icons/Go.astro"
+import Redis from "./icons/Redis.astro"
+import Express from "./icons/Express.astro"
+
+const TAGS = {
+  NEXT: {
+    name: "Next.js",
+    class: "bg-black text-white",
+    icon: NextJS,
+  },
+  TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-[#003159] text-white",
+    icon: Tailwind,
+  },
+  REACT: {
+    name: "React",
+    class: "bg-[#0279b1] text-white",
+    icon: React,
+  },
+  NODEJS: {
+    name: "NodeJS",
+    class: "bg-[#015a0a] text-white",
+    icon: NodeJS,
+  },
+  GO: {
+    name: "Go",
+    class: "bg-[#00a2ce] text-white",
+    icon: Go,
+  },
+  REDIS: {
+    name: "Redis",
+    class: "bg-[#C6302B] text-white",
+    icon: Redis,
+  },
+  EXPRESS: {
+    name: "Express",
+    class: "bg-[#000000] text-white",
+    icon: Express,
+  }
+}
+const PROJECTS = [
+  {
+    title: "Tonolele - Cancionero digital de musica cristiana",
+    description:
+      "Plataforma digital para músicos cristianos con editor interactivo de acordes. Soporta transposición automática con números romanos, notación latina y americana. Organiza canciones en cancioneros, busca por título, imprime colecciones completas. Sincronización en la nube con Vercel KV, temas claro/oscuro y diseño responsivo. Creada con React.",
+    link: "https://tonolele.vercel.app/",
+    github: "https://github.com/andresdal/Tonolele2",
+    image: "/projects/tonolele.png",
+    tags: [TAGS.REACT],
+  },
+  {
+    title: "One Way - Ecommerce de indumentaria",
+    description:
+      "E-commerce de indumentaria creada con React y NodeJS. Integración de pagos con Mercado Pago y envíos con Correo Argentino. Implementación de CI/CD con GitHub Actions, Vercel y Railway. Desarrollo desde cero, incluyendo diseño responsivo y optimización para SEO.",
+    link: "https://oneway.ar/",
+    github: "https://github.com/andresdal/one-way-store",
+    image: "/projects/oneway.png",
+    tags: [TAGS.REACT, TAGS.EXPRESS],
+  },
+  {
+    title: "Script Check Jobs",
+    description: "Sistema de monitoreo del estado de API's y bases de datos criticas para el correcto funcionamiento de la plataforma de NeptuneAds. Implementado con Golang. Permite la detección temprana de fallos y la generación de alertas para el equipo de desarrollo a través de un canal de Slack.",
+    github: "https://github.com/andresdal/script_check_jobs",
+    image: "/projects/script_check_jobs.png",
+    tags: [TAGS.GO, TAGS.REDIS],
+  },
+  {
+    title: "Importador de Shopify",
+    description: "Servicio de automatizacion de importacion de productos a Shopify. Permite a los usuarios importar grandes catálogos de productos a su tienda Shopify de manera rápida y eficiente de otras plataformas como Amazon y Aliexpress por medio de web scraping, utilizando la API de Shopify para crear productos, variantes e imágenes. Implementado con NodeJS y Express.",
+    github: "https://github.com/andresdal/shopify",
+    image: "/projects/shopify.png",
+    tags: [TAGS.EXPRESS],
+  }
+]
+---
+
+<div class="flex flex-col gap-y-16">
+  {
+    PROJECTS.map(({ image, title, description, tags, link, github }) => (
+    <article class="scroll-animate scroll-animate-left flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+  <div class="w-full md:w-1/2">
+    <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+      <img alt="Recién llegado vs 5 años en Nueva Zelanda" class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" loading="lazy" src={image} />
+    </div>
+  </div>
+
+  <div class="w-full md:w-1/2 md:max-w-lg">
+    <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+      {title}
+    </h3>
+    <div class="flex flex-wrap mt-2">
+      <ul class="flex flex-row mb-2 gap-x-2">
+          {tags.map((tag) => (
+            <li>
+              <span
+                class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
+              >
+                <tag.icon class="size-4" />
+                {tag.name}
+              </span>
+            </li>
+          ))}
+        </ul>
+
+      <div class="mt-2 text-gray-700 dark:text-gray-400">{description}</div>
+      <footer class="flex items-end justify-start mt-4 gap-x-4">
+          {github && (
+            <LinkButton href={github}>
+              <GitHub class="size-6" />
+              Code
+              
+            </LinkButton>
+          )}
+          {link && (
+            <LinkButton href={link}>
+              <Link class="size-4" />
+              Preview
+            </LinkButton>
+          )}
+        </footer>
+    </div>
+  </div>
+</article>
+    ))
+  }
+</div>
+
+
+
