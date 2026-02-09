@@ -1,61 +1,116 @@
-<div class="badge-container">
-  <span class="badge-border">
-    <span class="badge-spinner"></span>
-    <div class="badge-content">
-      <slot />
-    </div>
-  </span>
-</div>
+<button class="badge-btn">
+  <div class="badge-btn__bg">
+    <span class="badge-btn__bg__layer badge-btn__bg__layer-first"></span>
+    <span class="badge-btn__bg__layer badge-btn__bg__layer-second"></span>
+    <span class="badge-btn__bg__layer badge-btn__bg__layer-third"></span>
+  </div>
+
+  <span class="badge-btn__text-out"><slot /></span>
+  <span class="badge-btn__text-in"><slot /></span>
+</button>
 
 <style>
-  .badge-container {
-    display: flex;
-    align-items: center;
-  }
-
-  .badge-border {
+  .badge-btn {
+    display: inline-block;
+    height: 4rem;
+    min-width: 15rem;
+    padding: 0 1rem;
     position: relative;
-    display: inline-flex;
-    overflow: hidden;
-    border-radius: 9999px;
-    padding: 2px;
-  }
-
-  .badge-spinner {
-    position: absolute;
-    inset: -1000%;
-    background: conic-gradient(from 90deg at 50% 50%, #667eea 0%, #764ba2 50%, #667eea 100%);
-    animation: spin 3s linear infinite;
-  }
-
-  @keyframes spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
-  .badge-content {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
-    font-weight: 600;
-    background: rgba(10, 10, 10, 0.9);
-    color: white;
-    border-radius: 9999px;
-    backdrop-filter: blur(20px);
-    white-space: nowrap;
+    border: none;
+    border-radius: 999rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+    overflow: hidden;
+    background-color: transparent;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+  }
+  
+  .badge-btn:hover .badge-btn__bg {
+    scale: 0.94;
+  }
+  
+  .badge-btn:hover .badge-btn__text-out {
+    transition: transform 1s cubic-bezier(0.32, 0.99, 0.49, 0.99), opacity 0.4s;
+    transform: translateY(-33.333333%);
+    opacity: 0;
+  }
+  
+  .badge-btn:hover .badge-btn__text-in {
+    transition: 1s all cubic-bezier(0.32, 0.99, 0.49, 0.99);
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .badge-btn:hover .badge-btn__bg__layer-first,
+  .badge-btn:hover .badge-btn__bg__layer-second,
+  .badge-btn:hover .badge-btn__bg__layer-third {
+    border-radius: 60% 60% 0 0;
+    transform: translateY(1rem);
+  }
+  
+  .badge-btn:hover .badge-btn__bg__layer-first {
+    transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1) 200ms, border-radius 0.2s cubic-bezier(0.19, 1, 0.22, 1) 270ms;
+  }
+  
+  .badge-btn:hover .badge-btn__bg__layer-second {
+    transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1) 300ms, border-radius 0.2s cubic-bezier(0.19, 1, 0.22, 1) 470ms;
+  }
+  
+  .badge-btn:hover .badge-btn__bg__layer-third {
+    transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1) 380ms, border-radius 0.2s cubic-bezier(0.19, 1, 0.22, 1) 670ms;
+  }
+  
+  .badge-btn__text-out,
+  .badge-btn__text-in {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    z-index: 10;
+    color: #2A1810;
+    white-space: nowrap;
+  }
+  
+  .badge-btn__text-in {
+    opacity: 0;
+    transform: translateY(33.333333%);
+  }
+  
+  .badge-btn__bg {
+    height: 100%;
+    width: 100%;
+    transition: scale 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+    background-color: #F4A261;
+    border-radius: 999rem;
+    overflow: hidden;
   }
 
-  .badge-content:hover {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
-    transform: scale(1.05);
+  .badge-btn__bg__layer {
+    position: absolute;
+    display: block;
+    bottom: 0;
+    left: 50%;
+    translate: -50%;
+    border-radius: 999rem 999rem 0 0;
+    border: none;
+    width: 120%;
+    height: 200%;
+    z-index: 5;
+    transform: translateY(100%) translateX(0);
+  }
+
+  .badge-btn__bg__layer-first {
+    background-color: #E76F51;
+  }
+
+  .badge-btn__bg__layer-second {
+    background-color: #C9ADA7;
+  }
+
+  .badge-btn__bg__layer-third {
+    background-color: #F4A261;
   }
 </style>

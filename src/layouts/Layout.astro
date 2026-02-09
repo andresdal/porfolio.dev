@@ -28,16 +28,11 @@ const { description, title } = Astro.props
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   </head>
 
-  <body class="relative text-white overflow-x-hidden">
-    <!-- Fondo animado con gradiente -->
-    <div class="fixed inset-0 z-[-2] bg-[#0a0a0a]">
-      <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/10 to-teal-900/20"></div>
-      <div class="grain-overlay"></div>
+  <body class="relative text-on-surface overflow-x-hidden">
+    <!-- Fondo Material Design 3 -->
+    <div class="fixed inset-0 z-[-2] bg-surface">
+      <div class="absolute inset-0 bg-gradient-subtle"></div>
     </div>
-    
-    <!-- Elementos decorativos flotantes -->
-    <div class="fixed top-20 right-20 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl animate-float"></div>
-    <div class="fixed bottom-20 left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-float-delayed"></div>
     
     <Header />
     <slot />
@@ -45,17 +40,34 @@ const { description, title } = Astro.props
     
     <style is:global>
       :root {
-        color-scheme: dark;
+        /* Material Design 3 Color System */
+        --md-primary: #E76F51;
+        --md-secondary: #C9ADA7;
+        --md-tertiary: #F4A261;
+        --md-surface: #F2E9E4;
+        --md-surface-variant: #E8DDD8;
+        --md-background: #FFF8F3;
+        --md-on-surface: #2A1810;
+        --md-on-primary: #FFFFFF;
+        --md-outline: #9A8C84;
+        --md-shadow: rgba(42, 24, 16, 0.1);
+        
+        /* Elevations */
+        --md-elevation-1: 0 1px 2px 0 var(--md-shadow);
+        --md-elevation-2: 0 2px 6px 0 var(--md-shadow);
+        --md-elevation-3: 0 4px 12px 0 var(--md-shadow);
+        --md-elevation-4: 0 6px 16px 0 var(--md-shadow);
+        --md-elevation-5: 0 8px 24px 0 var(--md-shadow);
       }
 
       html {
-        font-family: 'Space Grotesk', "Onest Variable", system-ui, sans-serif;
+        font-family: 'Space Grotesk', system-ui, sans-serif;
         scroll-behavior: smooth;
-        background: #0a0a0a;
+        background: var(--md-background);
       }
 
       body {
-        color: #ffffff;
+        color: var(--md-on-surface);
         display: flex;
         flex-direction: column;
         min-height: 100vh;
@@ -68,86 +80,17 @@ const { description, title } = Astro.props
         }
       }
 
-      @media (prefers-color-scheme: dark) {
-        body {
-          color: rgba(255, 255, 255, 0.9);
-        }
+      /* Material Design 3 Surface Gradient */
+      .bg-surface {
+        background: var(--md-surface);
       }
 
-      #header-nav {
-        animation: blur linear both 0.5s;
-        animation-timeline: scroll();
-        animation-range: 0 500px;
-      }
-
-      @keyframes blur {
-        to {
-          backdrop-filter: blur(20px);
-          border-width: 1px;
-          border-color: rgba(0, 0, 0);
-          padding: 0.25rem 0.75rem;
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          background-color: rgb(229, 229, 229);
-          border-radius: 9999px;
-        }
-      }
-
-      @media (prefers-color-scheme: dark) {
-        @keyframes blur {
-          from {
-            border: 0px;
-          }
-          to {
-            box-shadow:
-              0px 5px 50px -5px rgba(0, 0, 0, 0.1),
-              0px 0px 0 1px rgba(0, 0, 0, 0.3);
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(20px);
-            border-width: 1px;
-            border-color: rgba(0, 0, 0);
-            padding-left: 0.75rem;
-            padding-right: 0.75rem;
-            padding-top: 0.25rem;
-            padding-bottom: 0.25rem;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            background-color: rgba(0, 0, 0, 0.3);
-            border-radius: 9999px;
-          }
-        }
-      }
-
-      /* Efecto de grano */
-      .grain-overlay {
-        position: absolute;
-        inset: 0;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
-        pointer-events: none;
-        opacity: 0.5;
-      }
-
-      /* Animaciones flotantes */
-      @keyframes float {
-        0%, 100% { transform: translate(0, 0) scale(1); }
-        33% { transform: translate(30px, -30px) scale(1.1); }
-        66% { transform: translate(-20px, 20px) scale(0.9); }
-      }
-
-      @keyframes float-delayed {
-        0%, 100% { transform: translate(0, 0) scale(1); }
-        33% { transform: translate(-40px, 30px) scale(0.9); }
-        66% { transform: translate(30px, -20px) scale(1.1); }
-      }
-
-      .animate-float {
-        animation: float 20s ease-in-out infinite;
-      }
-
-      .animate-float-delayed {
-        animation: float-delayed 25s ease-in-out infinite;
+      .bg-gradient-subtle {
+        background: linear-gradient(180deg, 
+          var(--md-background) 0%, 
+          var(--md-surface) 50%, 
+          var(--md-surface-variant) 100%
+        );
       }
 
       /* Animaciones de scroll */
@@ -169,20 +112,20 @@ const { description, title } = Astro.props
         transform: translateX(0);
       }
 
-      /* Efectos de texto con clip-path */
+      /* Material Design 3 Text Effects */
       .text-effect {
         font-size: clamp(2rem, 8vw, 6rem);
         letter-spacing: -0.02em;
         line-height: 100%;
         margin: 0;
         width: 100%;
-        color: rgba(182, 182, 182, 0.2);
-        background: linear-gradient(to right, #ffffff, #ffffff) no-repeat;
+        color: rgba(42, 24, 16, 0.2);
+        background: linear-gradient(to right, var(--md-on-surface), var(--md-on-surface)) no-repeat;
         -webkit-background-clip: text;
         background-clip: text;
         background-size: 0%;
         transition: background-size cubic-bezier(0.1, 0.5, 0.5, 1) 0.5s;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid var(--md-outline);
         display: flex;
         position: relative;
         cursor: pointer;
@@ -192,8 +135,8 @@ const { description, title } = Astro.props
         position: absolute;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: #0a0a0a;
+        background: var(--md-primary);
+        color: var(--md-on-primary);
         clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
         transform-origin: center;
         transition: all cubic-bezier(0.1, 0.5, 0.5, 1) 0.4s;

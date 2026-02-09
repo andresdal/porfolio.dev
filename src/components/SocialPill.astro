@@ -14,42 +14,30 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    font-size: 0.9375rem;
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
     font-weight: 600;
-    color: white;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--md-on-primary);
+    background: var(--md-primary);
+    border: none;
     border-radius: 9999px;
     text-decoration: none;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
     max-width: fit-content;
-  }
-
-  .social-pill::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    box-shadow: var(--md-elevation-1);
   }
 
   .social-pill:hover {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
-    border-color: rgba(102, 126, 234, 0.5);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px -10px rgba(102, 126, 234, 0.4);
-  }
-
-  .social-pill:hover::before {
-    opacity: 1;
+    background: var(--md-secondary);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: var(--md-elevation-3);
   }
 
   .social-pill:active {
-    transform: translateY(0);
+    transform: translateY(0) scale(0.98);
+    box-shadow: var(--md-elevation-1);
   }
 
   .social-pill:focus {
@@ -57,7 +45,7 @@
   }
 
   .social-pill:focus-visible {
-    outline: 2px solid rgba(102, 126, 234, 0.8);
-    outline-offset: 2px;
+    outline: 2px solid var(--md-primary);
+    outline-offset: 3px;
   }
 </style>
