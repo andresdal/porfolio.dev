@@ -12,8 +12,8 @@
 <style>
   .badge-btn {
     display: inline-block;
-    height: 4rem;
-    min-width: 15rem;
+    height: 3.5rem;
+    min-width: 13rem;
     padding: 0 1rem;
     position: relative;
     border: none;
@@ -22,6 +22,13 @@
     overflow: hidden;
     background-color: transparent;
     font-family: 'Space Grotesk', system-ui, sans-serif;
+  }
+  
+  @media (min-width: 640px) {
+    .badge-btn {
+      height: 4rem;
+      min-width: 15rem;
+    }
   }
   
   .badge-btn:hover .badge-btn__bg {
@@ -68,10 +75,19 @@
     inset: 0;
     margin: auto;
     font-weight: 600;
-    font-size: 0.9375rem;
+    font-size: 0.8125rem;
     z-index: 10;
-    color: #2A1810;
+    color: var(--md-on-primary);
     white-space: nowrap;
+    padding: 0 0.5rem;
+  }
+  
+  @media (min-width: 640px) {
+    .badge-btn__text-out,
+    .badge-btn__text-in {
+      font-size: 0.9375rem;
+      padding: 0;
+    }
   }
   
   .badge-btn__text-in {
@@ -83,7 +99,7 @@
     height: 100%;
     width: 100%;
     transition: scale 1.5s cubic-bezier(0.19, 1, 0.22, 1);
-    background-color: #F4A261;
+    background-color: var(--md-tertiary);
     border-radius: 999rem;
     overflow: hidden;
   }
@@ -103,14 +119,14 @@
   }
 
   .badge-btn__bg__layer-first {
-    background-color: #E76F51;
+    background-color: var(--md-primary);
   }
 
   .badge-btn__bg__layer-second {
-    background-color: #C9ADA7;
+    background-color: var(--md-secondary);
   }
 
   .badge-btn__bg__layer-third {
-    background-color: #F4A261;
+    background-color: var(--md-tertiary);
   }
 </style>

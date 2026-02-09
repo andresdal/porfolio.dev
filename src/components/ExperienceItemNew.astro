@@ -107,6 +107,12 @@ const { title, company, description, date } = Astro.props
     overflow: hidden;
     box-shadow: var(--md-elevation-1);
   }
+  
+  @media (max-width: 640px) {
+    .experience-content {
+      padding: 1.5rem;
+    }
+  }
 
   .experience-card:hover .experience-content {
     transform: translateX(10px);
@@ -125,6 +131,12 @@ const { title, company, description, date } = Astro.props
     margin-bottom: 0.75rem;
     transition: all 0.3s ease;
   }
+  
+  @media (max-width: 640px) {
+    .experience-title {
+      font-size: 1.25rem;
+    }
+  }
 
   .experience-card:hover .experience-title {
     color: var(--md-primary);
@@ -140,6 +152,13 @@ const { title, company, description, date } = Astro.props
     color: var(--md-on-surface);
     transition: all 0.3s ease;
     box-shadow: var(--md-elevation-1);
+  }
+  
+  @media (max-width: 640px) {
+    .company-badge {
+      font-size: 0.8125rem;
+      padding: 0.375rem 0.875rem;
+    }
   }
 
   .experience-card:hover .company-badge {

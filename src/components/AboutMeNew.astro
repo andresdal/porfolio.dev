@@ -106,6 +106,14 @@ const personalImageAlt = "Andrés D'Alessandro"
     opacity: 0.9;
     font-size: 1.0625rem;
   }
+  
+  @media (max-width: 640px) {
+    .about-paragraph {
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+  }
 
   .about-paragraph strong {
     color: var(--md-primary);
@@ -160,6 +168,13 @@ const personalImageAlt = "Andrés D'Alessandro"
     transform: rotate(3deg);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1;
+  }
+  
+  @media (max-width: 640px) {
+    .about-image {
+      max-width: 250px;
+      border: 3px solid var(--md-primary);
+    }
   }
 
   .about-image:hover {

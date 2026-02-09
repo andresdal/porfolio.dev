@@ -13,37 +13,37 @@ import Express from "./icons/Express.astro"
 const TAGS = {
   NEXT: {
     name: "Next.js",
-    class: "bg-black text-white",
+    class: "tag-next",
     icon: NextJS,
   },
   TAILWIND: {
     name: "Tailwind CSS",
-    class: "bg-[#003159] text-white",
+    class: "tag-tailwind",
     icon: Tailwind,
   },
   REACT: {
     name: "React",
-    class: "bg-[#0279b1] text-white",
+    class: "tag-react",
     icon: React,
   },
   NODEJS: {
     name: "NodeJS",
-    class: "bg-[#015a0a] text-white",
+    class: "tag-nodejs",
     icon: NodeJS,
   },
   GO: {
     name: "Go",
-    class: "bg-[#00a2ce] text-white",
+    class: "tag-go",
     icon: Go,
   },
   REDIS: {
     name: "Redis",
-    class: "bg-[#C6302B] text-white",
+    class: "tag-redis",
     icon: Redis,
   },
   EXPRESS: {
     name: "Express",
-    class: "bg-[#000000] text-white",
+    class: "tag-express",
     icon: Express,
   }
 }
@@ -237,6 +237,12 @@ const PROJECTS = [
     padding: 2rem;
     z-index: 2;
   }
+  
+  @media (max-width: 640px) {
+    .project-content {
+      padding: 1.25rem;
+    }
+  }
 
   .project-title {
     font-size: 1.75rem;
@@ -245,6 +251,18 @@ const PROJECTS = [
     margin-bottom: 1rem;
     line-height: 1.3;
     transition: all 0.3s ease;
+  }
+
+  @media (max-width: 640px) {
+    .project-title {
+      font-size: 1.25rem;
+    }
+  }
+
+  @media (min-width: 641px) and (max-width: 768px) {
+    .project-title {
+      font-size: 1.5rem;
+    }
   }
 
   .project-card:hover .project-title {
@@ -273,12 +291,80 @@ const PROJECTS = [
     transform: translateY(-2px);
   }
 
+  /* Tag colors using CSS variables for dark mode support */
+  .tag-next {
+    background: var(--md-on-surface);
+    color: var(--md-surface);
+  }
+  
+  .tag-tailwind {
+    background: #38bdf8;
+    color: #082f49;
+  }
+  
+  .dark .tag-tailwind {
+    background: #0c4a6e;
+    color: #7dd3fc;
+  }
+  
+  .tag-react {
+    background: #61dafb;
+    color: #20232a;
+  }
+  
+  .dark .tag-react {
+    background: #0e7490;
+    color: #67e8f9;
+  }
+  
+  .tag-nodejs {
+    background: #68a063;
+    color: #1a1a1a;
+  }
+  
+  .dark .tag-nodejs {
+    background: #14532d;
+    color: #86efac;
+  }
+  
+  .tag-go {
+    background: #00add8;
+    color: #ffffff;
+  }
+  
+  .dark .tag-go {
+    background: #075985;
+    color: #7dd3fc;
+  }
+  
+  .tag-redis {
+    background: #dc2626;
+    color: #ffffff;
+  }
+  
+  .dark .tag-redis {
+    background: #7f1d1d;
+    color: #fca5a5;
+  }
+  
+  .tag-express {
+    background: var(--md-on-surface);
+    color: var(--md-surface);
+  }
+
   .project-description {
     color: var(--md-on-surface);
     opacity: 0.8;
     line-height: 1.7;
     margin-bottom: 1.5rem;
     font-size: 0.9375rem;
+  }
+  
+  @media (max-width: 640px) {
+    .project-description {
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
   }
 
   .project-links {
@@ -332,6 +418,21 @@ const PROJECTS = [
 
     .project-title {
       font-size: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .projects-grid {
+      gap: 1.5rem;
+    }
+    
+    .project-image-container {
+      height: 180px;
+    }
+    
+    .project-link {
+      padding: 0.625rem 1.25rem;
+      font-size: 0.875rem;
     }
   }
 </style>

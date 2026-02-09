@@ -10,7 +10,8 @@ const THEMES = ["Light", "Dark", "System"]
   <button
     transition:persist
     id="theme-toggle-btn"
-    class="appearance-none border-none flex hover:scale-125 transition"
+    class="appearance-none border-none flex hover:scale-125 transition p-2 rounded-full hover:bg-[var(--md-surface-variant)]"
+    style="color: var(--md-on-surface);"
   >
     <span class="sr-only">Elige el tema</span>
     <SunIcon id="light" class="theme-toggle-icon size-5 transition-all" />
@@ -26,12 +27,13 @@ const THEMES = ["Light", "Dark", "System"]
   <div
     transition:persist
     id="themes-menu"
-    class="absolute hidden scale-80 top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md border border-gray-100 bg-white/90 dark:bg-gray-900/90 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md"
+    class="absolute hidden scale-80 top-12 right-0 text-sm p-1 min-w-[8rem] rounded-lg border backdrop-blur-md"
+    style="background: var(--md-surface); border-color: var(--md-outline); box-shadow: var(--md-elevation-3); color: var(--md-on-surface);"
   >
     <ul>
       {
         THEMES.map((theme) => (
-          <li class="themes-menu-option px-2 py-1.5 cursor-default hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm">
+          <li class="themes-menu-option px-3 py-2 cursor-pointer rounded-md hover:bg-[var(--md-surface-variant)] transition-colors">
             {theme}
           </li>
         ))

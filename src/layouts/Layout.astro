@@ -18,7 +18,7 @@ const { description, title } = Astro.props
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
@@ -40,7 +40,7 @@ const { description, title } = Astro.props
     
     <style is:global>
       :root {
-        /* Material Design 3 Color System */
+        /* Material Design 3 Color System - Light Theme */
         --md-primary: #E76F51;
         --md-secondary: #C9ADA7;
         --md-tertiary: #F4A261;
@@ -53,6 +53,27 @@ const { description, title } = Astro.props
         --md-shadow: rgba(42, 24, 16, 0.1);
         
         /* Elevations */
+        --md-elevation-1: 0 1px 2px 0 var(--md-shadow);
+        --md-elevation-2: 0 2px 6px 0 var(--md-shadow);
+        --md-elevation-3: 0 4px 12px 0 var(--md-shadow);
+        --md-elevation-4: 0 6px 16px 0 var(--md-shadow);
+        --md-elevation-5: 0 8px 24px 0 var(--md-shadow);
+      }
+
+      /* Material Design 3 Color System - Dark Theme */
+      .dark {
+        --md-primary: #FFB4A2;
+        --md-secondary: #E7D7CF;
+        --md-tertiary: #FFD4A3;
+        --md-surface: #1C1B1F;
+        --md-surface-variant: #49454F;
+        --md-background: #1C1B1F;
+        --md-on-surface: #E6E1E5;
+        --md-on-primary: #5A1A0D;
+        --md-outline: #938F99;
+        --md-shadow: rgba(0, 0, 0, 0.3);
+        
+        /* Elevations for dark mode */
         --md-elevation-1: 0 1px 2px 0 var(--md-shadow);
         --md-elevation-2: 0 2px 6px 0 var(--md-shadow);
         --md-elevation-3: 0 4px 12px 0 var(--md-shadow);
@@ -114,12 +135,12 @@ const { description, title } = Astro.props
 
       /* Material Design 3 Text Effects */
       .text-effect {
-        font-size: clamp(2rem, 8vw, 6rem);
+        font-size: clamp(1.75rem, 7vw, 6rem);
         letter-spacing: -0.02em;
-        line-height: 100%;
+        line-height: 110%;
         margin: 0;
         width: 100%;
-        color: rgba(42, 24, 16, 0.2);
+        color: color-mix(in srgb, var(--md-on-surface) 20%, transparent);
         background: linear-gradient(to right, var(--md-on-surface), var(--md-on-surface)) no-repeat;
         -webkit-background-clip: text;
         background-clip: text;
@@ -129,6 +150,13 @@ const { description, title } = Astro.props
         display: flex;
         position: relative;
         cursor: pointer;
+      }
+      
+      @media (min-width: 768px) {
+        .text-effect {
+          font-size: clamp(2rem, 8vw, 6rem);
+          line-height: 100%;
+        }
       }
 
       .text-effect span {
