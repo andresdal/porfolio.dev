@@ -55,7 +55,7 @@ const PROJECTS = [
       "Plataforma digital para músicos cristianos con editor interactivo de acordes. Soporta transposición automática con números romanos, notación latina y americana. Organiza canciones en cancioneros, busca por título, imprime colecciones completas. Sincronización en la nube con Vercel KV, temas claro/oscuro y diseño responsivo. Creada con React.",
     link: "https://tonolele.vercel.app/",
     github: "https://github.com/andresdal/Tonolele2",
-    image: "/projects/tonolele.png",
+    image: "/projects/tonolele2.png",
     tags: [TAGS.REACT],
   },
   {
@@ -64,21 +64,21 @@ const PROJECTS = [
       "E-commerce de indumentaria creada con React y NodeJS. Integración de pagos con Mercado Pago y envíos con Correo Argentino. Implementación de CI/CD con GitHub Actions, Vercel y Railway. Desarrollo desde cero, incluyendo diseño responsivo y optimización para SEO.",
     link: "https://oneway.ar/",
     github: "https://github.com/andresdal/one-way-store",
-    image: "/projects/oneway.png",
+    image: "/projects/oneway2.png",
     tags: [TAGS.REACT, TAGS.EXPRESS],
   },
   {
     title: "Script Check Jobs",
     description: "Sistema de monitoreo del estado de API's y bases de datos criticas para el correcto funcionamiento de la plataforma de NeptuneAds. Implementado con Golang. Permite la detección temprana de fallos y la generación de alertas para el equipo de desarrollo a través de un canal de Slack.",
     github: "https://github.com/andresdal/script_check_jobs",
-    image: "/projects/script_check_jobs.png",
+    image: "/projects/script_check_jobs2.png",
     tags: [TAGS.GO, TAGS.REDIS],
   },
   {
     title: "Importador de Shopify",
     description: "Servicio de automatizacion de importacion de productos a Shopify. Permite a los usuarios importar grandes catálogos de productos a su tienda Shopify de manera rápida y eficiente de otras plataformas como Amazon y Aliexpress por medio de web scraping, utilizando la API de Shopify para crear productos, variantes e imágenes. Implementado con NodeJS y Express.",
     github: "https://github.com/andresdal/shopify",
-    image: "/projects/shopify.png",
+    image: "/projects/shopify2.png",
     tags: [TAGS.EXPRESS],
   }
 ]
@@ -147,7 +147,7 @@ const PROJECTS = [
       gsap.from(card, {
         opacity: 0,
         y: 100,
-        duration: 1,
+        duration: 0.2,
         delay: index * 0.2,
         scrollTrigger: {
           trigger: card,
@@ -225,7 +225,7 @@ const PROJECTS = [
       transparent 100%
     );
     opacity: 0.5;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.2s ease;
   }
 
   .project-card:hover .project-overlay {
