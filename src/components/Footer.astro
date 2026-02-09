@@ -2,27 +2,112 @@
 const currentYear = new Date().getFullYear()
 ---
 
-<footer
-  class="opacity-80 m-4 min-[375px]:pl-4 md:pl-0 mt-16 w-full mx-auto container lg:max-w-4xl md:max-w-2xl mb-10 flex justify-center"
->
-  <div
-    class="rounded-lg w-full max-w-screen-xl mx-auto md:flex md:items-center md:justify-between py-4"
-  >
-    <span class="text-sm sm:text-center text-zinc-800/90 dark:text-zinc-200/90"
-      >&copy; {currentYear}
-      <a href="https://midu.dev/" class="hover:underline">Andrés D'Alessandro</a>. Todos los derechos reservados
-    </span>
-    <ul
-      class="flex flex-wrap items-center mt-3 text-sm font-medium dark:text-white/90 sm:mt-0"
-    >
-      <li>
-        <a href="/#sobre-mi" class="hover:underline me-4 md:me-6">Sobre mí</a>
-      </li>
-      <li>
-        <a id="contacto" href="mailto:andres.dalesssandro@gmail.com" class="hover:underline"
-          >Contacto</a
-        >
-      </li>
-    </ul>
+<footer class="footer-container">
+  <div class="footer-content">
+    <div class="footer-divider"></div>
+    
+    <div class="footer-grid">
+      <span class="footer-text">
+        &copy; {currentYear}
+        <a href="/" class="footer-link">Andrés D'Alessandro</a>. 
+        Todos los derechos reservados
+      </span>
+      
+      <ul class="footer-links">
+        <li>
+          <a href="/#sobre-mi" class="footer-link">Sobre mí</a>
+        </li>
+        <li>
+          <a id="contacto" href="mailto:andres.dalesssandro@gmail.com" class="footer-link">
+            Contacto
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </footer>
+
+<style>
+  .footer-container {
+    width: 100%;
+    margin-top: 6rem;
+    padding: 2rem 1rem 3rem;
+  }
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer-divider {
+    height: 1px;
+    background: linear-gradient(to right, 
+      transparent, 
+      rgba(255, 255, 255, 0.1) 20%, 
+      rgba(255, 255, 255, 0.1) 80%, 
+      transparent
+    );
+    margin-bottom: 2rem;
+  }
+
+  .footer-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .footer-grid {
+      flex-direction: row;
+    }
+  }
+
+  .footer-text {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .footer-text {
+      text-align: left;
+    }
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer-link {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.875rem;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+
+  .footer-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transition: width 0.3s ease;
+  }
+
+  .footer-link:hover {
+    color: white;
+  }
+
+  .footer-link:hover::after {
+    width: 100%;
+  }
+</style>

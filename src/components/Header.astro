@@ -1,6 +1,4 @@
 ---
-import ThemeToggle from "./ThemeToggle.astro"
-
 const navItems = [
   {
     title: "Experiencia",
@@ -26,39 +24,67 @@ const navItems = [
 ---
 
 <header
-  class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2"
+  class="fixed top-0 z-50 flex items-center justify-center w-full mx-auto mt-4"
 >
-  <nav
-    class="flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center"
-  >
+  <nav id="header-nav" class="nav-container">
     {
-      navItems.map((link) => (
+      navItems.map((link, index) => (
         <a
-          class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-500"
+          class="nav-link"
           aria-label={link.label}
           href={link.url}
+          data-index={index}
         >
           {link.title}
         </a>
       ))
     }
-    <ThemeToggle />
+    <div class="selection-indicator-wrapper">
+      <span class="selection-indicator"></span>
+    </div>
   </nav>
 </header>
 
 <script>
   document.addEventListener("astro:page-load", () => {
     const sections = document.querySelectorAll("section")
-    const navItems = document.querySelectorAll("header nav a")
+    const navItems = document.querySelectorAll("header nav a.nav-link") as NodeListOf<HTMLElement>
+    const indicator = document.querySelector(".selection-indicator-wrapper") as HTMLElement
+    const nav = document.querySelector("nav") as HTMLElement
+    let activeIndex = 0
 
+    // Función para mover el indicador
+    function moveIndicator(index: number, morphFactor: number = 0) {
+      // Obtener la posición real del item
+      const targetItem = navItems[index]
+      const navRect = nav.getBoundingClientRect()
+      const itemRect = targetItem.getBoundingClientRect()
+      
+      // Calcular posición relativa al nav
+      const leftPosition = itemRect.left - navRect.left
+      const itemWidth = itemRect.width
+      
+      indicator.style.left = `${leftPosition}px`
+      indicator.style.width = `${itemWidth}px`
+      indicator.style.setProperty('--morph-factor', morphFactor.toString())
+    }
+
+    // Inicializar en el primer item después de que el layout esté listo
+    requestAnimationFrame(() => {
+      moveIndicator(0)
+    })
+
+    // Observer para secciones
     const callback = (entries: any[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          navItems.forEach((item) => {
+          navItems.forEach((item, index) => {
             if (item.getAttribute("aria-label") == entry.target.id) {
-              item.classList.add("text-blue-500")
+              item.classList.add("active")
+              activeIndex = index
+              moveIndicator(index)
             } else {
-              item.classList.remove("text-blue-500")
+              item.classList.remove("active")
             }
           })
         }
@@ -75,6 +101,46 @@ const navItems = [
       observer.observe(section)
     })
 
+    // Click en nav items
+    navItems.forEach((item, index) => {
+      item.addEventListener('click', (e) => {
+        // No prevenir default para emails
+        if (!item.getAttribute('href')?.startsWith('mailto:')) {
+          // Actualizar inmediatamente el activeIndex
+          activeIndex = index
+          
+          // Mover el indicador a la nueva posición centrado
+          moveIndicator(index, 0)
+          
+          // Actualizar clases
+          navItems.forEach(el => el.classList.remove('active'))
+          item.classList.add('active')
+        }
+      })
+
+      // Hover effects con morph - se estira hacia donde apuntas
+      item.addEventListener('mouseenter', () => {
+        const diff = index - activeIndex
+        moveIndicator(activeIndex, diff)
+      })
+
+      item.addEventListener('mouseleave', () => {
+        moveIndicator(activeIndex, 0)
+      })
+
+      item.addEventListener('mousedown', () => {
+        const diff = index - activeIndex
+        moveIndicator(activeIndex, -diff)
+        indicator.style.setProperty('--transition-duration', '0.1s')
+      })
+
+      item.addEventListener('mouseup', () => {
+        const newIndex = activeIndex
+        moveIndicator(newIndex, 0)
+        indicator.style.setProperty('--transition-duration', '0.3s')
+      })
+    })
+
     // Cleanup function
     document.onvisibilitychange = () => {
       if (document.visibilityState === "hidden") {
@@ -85,26 +151,134 @@ const navItems = [
         })
       }
     }
+
+    // Recalcular posición en resize
+    let resizeTimeout: number
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout)
+      resizeTimeout = setTimeout(() => {
+        moveIndicator(activeIndex, 0)
+      }, 100)
+    })
   })
 </script>
 
 <style>
-  nav {
-    animation: nav-shadown 1s linear both;
+  :root {
+    --bounciness: 15;
+  }
+
+  .nav-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    position: relative;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 9999px;
+    padding: 0.25rem;
+    animation: nav-reveal 1s ease-out both;
     animation-timeline: scroll();
     animation-range: 0 100px;
   }
 
-  nav {
-    @apply dark:bg-gray-800/90 bg-white/50;
+  .nav-link {
+    padding: 0.5rem 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    cursor: pointer;
   }
 
-  @keyframes nav-shadown {
+  .nav-link:hover {
+    color: white;
+  }
+
+  .nav-link.active {
+    color: #0a0a0a;
+  }
+
+  /* Selection Indicator con efecto bouncy */
+  .selection-indicator-wrapper {
+    --transition-duration: 0.3s;
+    --morph-factor: 0;
+    height: calc(100% - 0.5rem);
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 50%;
+    pointer-events: none;
+    transition-duration: var(--transition-duration);
+    transition-property: left, width, transform;
+    transition-timing-function: cubic-bezier(
+      0.25,
+      calc(var(--bounciness) / 10),
+      0.5,
+      1
+    );
+    transform: translateX(calc(var(--morph-factor) * 10%)) translateY(-50%) 
+      scaleX(calc(1 + var(--morph-factor) * var(--morph-factor) * 0.05))
+      scaleY(calc(1 - var(--morph-factor) * var(--morph-factor) * 0.1));
+  }
+
+  .selection-indicator {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 9999px;
+    transition-duration: calc(1.25 * var(--transition-duration));
+    transition-property: transform;
+    transition-timing-function: cubic-bezier(
+      0.95,
+      calc(0.5 * var(--bounciness)),
+      0,
+      1
+    );
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+  }
+
+  /* Efectos de morph al hacer hover/click en items adyacentes */
+  .nav-link:active ~ .selection-indicator-wrapper {
+    --transition-duration: 0.1s;
+  }
+
+  .nav-link:active ~ .selection-indicator-wrapper .selection-indicator {
+    transform: scaleX(calc(1 + var(--morph-factor) * var(--morph-factor) * 0.05))
+      scaleY(calc(1 - var(--morph-factor) * var(--morph-factor) * 0.1));
+    transition-timing-function: unset;
+  }
+
+  @keyframes nav-reveal {
     0% {
-      @apply dark:bg-gray-800/0 bg-white/0;
+      background: rgba(255, 255, 255, 0.02);
+      border-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
     }
     to {
-      @apply shadow-lg ring-1 backdrop-blur ring-white/10;
+      background: rgba(10, 10, 10, 0.8);
+      border-color: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 10px 40px -10px rgba(102, 126, 234, 0.3);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .nav-container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.25rem;
+    }
+
+    .nav-link {
+      padding: 0.5rem 1rem;
+      font-size: 0.8125rem;
     }
   }
 </style>

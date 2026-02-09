@@ -1,0 +1,172 @@
+---
+const personalImageAlt = "Andrés D'Alessandro"
+---
+
+<article class="about-container">
+  <div class="about-content">
+    <div class="about-text">
+      <p class="about-paragraph">
+        Soy Andrés D'Alessandro, un estudiante de Ingeniería en Sistemas en la UTN con experiencia en desarrollo web, frontend y backend <strong>aplicando principios SOLID e inteligencia artificial</strong>.
+      </p>
+
+      <p class="about-paragraph">
+        Entre mis proyectos, destaco la página de comercio electronico One Way, donde <strong>aprendí a trabajar con React a través de la IA y a integrarme con APIs de pagos electricos (Mercado Pago) y de envios (Correo Argentino) en un caso real</strong>.  
+      </p>
+
+      <p class="about-paragraph"> 
+        Tambíen implementé nuevas funcionalidades y realicé mantenimiento de los sistemas backoffice de NeptuneAds con PHP y Laravel.
+      </p>
+
+      <p class="about-paragraph">
+        En lo que más hago foco es en la <strong>lógica de programación</strong>, algo que fuí puliendo a lo largo de mi carrera y mi trabajo. Eso me permite adaptarme a cualquier lenguaje rápidamente, sumado a mi aprendizaje autodidacta y al uso de la IA con un preciso <strong>prompt engineering</strong>.
+      </p>
+    </div>
+
+    <div class="about-image-wrapper">
+      <div class="image-decoration"></div>
+      <img 
+        src="/perfil.jpg" 
+        alt={personalImageAlt} 
+        class="about-image"
+      />
+    </div>
+  </div>
+</article>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener('astro:page-load', () => {
+    // Animar párrafos
+    gsap.from('.about-paragraph', {
+      opacity: 0,
+      y: 30,
+      stagger: 0.2,
+      duration: 0.8,
+      scrollTrigger: {
+        trigger: '.about-container',
+        start: 'top 70%',
+        end: 'top 40%',
+        toggleActions: 'play none none reverse'
+      }
+    });
+
+    // Animar imagen
+    gsap.from('.about-image-wrapper', {
+      opacity: 0,
+      x: 50,
+      rotation: -5,
+      duration: 1,
+      scrollTrigger: {
+        trigger: '.about-container',
+        start: 'top 70%',
+        end: 'top 40%',
+        toggleActions: 'play none none reverse'
+      }
+    });
+  });
+</script>
+
+<style>
+  .about-container {
+    position: relative;
+  }
+
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    .about-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  .about-text {
+    order: 1;
+  }
+
+  @media (max-width: 768px) {
+    .about-text {
+      order: 2;
+    }
+  }
+
+  .about-paragraph {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.0625rem;
+  }
+
+  .about-paragraph strong {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+  }
+
+  .about-image-wrapper {
+    position: relative;
+    order: 2;
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (max-width: 768px) {
+    .about-image-wrapper {
+      order: 1;
+    }
+  }
+
+  .image-decoration {
+    position: absolute;
+    inset: -20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 2rem;
+    opacity: 0.2;
+    filter: blur(40px);
+    z-index: 0;
+    transform: rotate(3deg);
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 0.2;
+      transform: rotate(3deg) scale(1);
+    }
+    50% {
+      opacity: 0.3;
+      transform: rotate(-3deg) scale(1.05);
+    }
+  }
+
+  .about-image {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: 50% 50%;
+    border-radius: 2rem;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 60px -10px rgba(0, 0, 0, 0.5);
+    transform: rotate(3deg);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+  }
+
+  .about-image:hover {
+    transform: rotate(0deg) scale(1.05);
+    border-color: rgba(102, 126, 234, 0.5);
+  }
+</style>

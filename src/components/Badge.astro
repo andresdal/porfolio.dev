@@ -1,10 +1,61 @@
-<div class="flex items-center ">
-<span class="relative inline-flex overflow-hidden rounded-full p-[1px]">
-  <span
-    class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#51E4B8_0%,#21554E_50%,#51E4B8_100%)]"
-  ></span>
-  <div class="inline-flex items-center justify-center w-full px-3 py-1 text-sm text-green-800 bg-green-100 rounded-full cursor-pointer dark:bg-gray-800 dark:text-white/80 backdrop-blur-3xl whitespace-nowrap">
-    <slot />
-  </div>
-</span>
+<div class="badge-container">
+  <span class="badge-border">
+    <span class="badge-spinner"></span>
+    <div class="badge-content">
+      <slot />
+    </div>
+  </span>
 </div>
+
+<style>
+  .badge-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .badge-border {
+    position: relative;
+    display: inline-flex;
+    overflow: hidden;
+    border-radius: 9999px;
+    padding: 2px;
+  }
+
+  .badge-spinner {
+    position: absolute;
+    inset: -1000%;
+    background: conic-gradient(from 90deg at 50% 50%, #667eea 0%, #764ba2 50%, #667eea 100%);
+    animation: spin 3s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .badge-content {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    background: rgba(10, 10, 10, 0.9);
+    color: white;
+    border-radius: 9999px;
+    backdrop-filter: blur(20px);
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .badge-content:hover {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
+    transform: scale(1.05);
+  }
+</style>
