@@ -23,21 +23,21 @@ import TitleSectionNew from "@/components/TitleSectionNew.astro"
 
     <div class="sections-wrapper">
       <SectionContainerNew id="experiencia">
-        <TitleSectionNew>
+        <TitleSectionNew title="Experiencia">
           <Briefcase class="size-8" />
         </TitleSectionNew>
         <ExperienceNew />
       </SectionContainerNew>
 
       <SectionContainerNew id="proyectos">
-        <TitleSectionNew>
+        <TitleSectionNew title="Proyectos">
           <CodeIcon class="size-8" />
         </TitleSectionNew>
         <ProjectsNew />
       </SectionContainerNew>
 
       <SectionContainerNew id="sobre-mi">
-        <TitleSectionNew>
+        <TitleSectionNew title="Sobre mí">
           <ProfileCheck class="size-8" />
         </TitleSectionNew>
         <AboutMeNew />
@@ -50,6 +50,8 @@ import TitleSectionNew from "@/components/TitleSectionNew.astro"
   main {
     position: relative;
     z-index: 1;
+    width: 100%;
+    overflow-x: hidden;
   }
 
   .hero-section {
@@ -57,10 +59,12 @@ import TitleSectionNew from "@/components/TitleSectionNew.astro"
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
   }
 
   .sections-wrapper {
     position: relative;
+    width: 100%;
   }
 </style>
 </Layout>

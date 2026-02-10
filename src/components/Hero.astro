@@ -131,6 +131,9 @@ import SocialPill from "@/components/SocialPill.astro"
     justify-content: center;
     position: relative;
     padding: 6rem 2rem 2rem;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   .hero-content {
@@ -143,11 +146,11 @@ import SocialPill from "@/components/SocialPill.astro"
   @media (max-width: 768px) {
     .hero-container {
       min-height: auto;
-      padding: 6rem 1rem 3rem;
+      padding: 6rem 0.5rem 3rem;
     }
     
     .hero-content {
-      padding: 0;
+      padding: 0 0.5rem;
     }
   }
 
@@ -210,17 +213,39 @@ import SocialPill from "@/components/SocialPill.astro"
   .hero-titles {
     text-align: center;
     margin-bottom: 2rem;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .hero-text-1, .hero-text-2, .hero-text-3 {
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
   }
 
   .hero-text-3 {
-    font-size: clamp(1rem, 4vw, 3.5rem) !important;
+    font-size: clamp(2rem, 6vw, 4.5rem) !important;
   }
-  
+
   @media (max-width: 640px) {
-    .hero-titles {
-      margin-bottom: 1.5rem;
+    .hero-text-1 {
+      font-size: clamp(2.75rem, 7vw, 3.5rem) !important;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-text-2 {
+      font-size: clamp(2.3rem, 7vw, 3.5rem) !important;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-text-3 {
+      font-size: clamp(1.8rem, 5vw, 2.5rem) !important;
+      letter-spacing: -0.02em;
     }
   }
+
+  
+  
   
   @media (min-width: 768px) {
     .hero-titles {

@@ -30,27 +30,32 @@ const { description, title } = Astro.props
 
   <body class="relative text-on-surface overflow-x-hidden">
     <!-- Fondo Material Design 3 -->
-    <div class="fixed inset-0 z-[-2] bg-surface">
-      <div class="absolute inset-0 bg-gradient-subtle"></div>
-    </div>
+    <div class="fixed inset-0 z-[-2] bg-surface"></div>
     
     <Header />
     <slot />
     <Footer />
     
     <style is:global>
+      /* Reset básico */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
       :root {
-        /* Material Design 3 Color System - Light Theme */
-        --md-primary: #E76F51;
-        --md-secondary: #C9ADA7;
-        --md-tertiary: #F4A261;
-        --md-surface: #F2E9E4;
-        --md-surface-variant: #E8DDD8;
-        --md-background: #FFF8F3;
-        --md-on-surface: #2A1810;
+        /* Material Design 3 Color System - Light Theme (Deep Violet) */
+        --md-primary: #6750A4;
+        --md-secondary: #625B71;
+        --md-tertiary: #7D5260;
+        --md-surface: #FEF7FF;
+        --md-surface-variant: #E7E0EC;
+        --md-background: #FEF7FF;
+        --md-on-surface: #1D1B20;
         --md-on-primary: #FFFFFF;
-        --md-outline: #9A8C84;
-        --md-shadow: rgba(42, 24, 16, 0.1);
+        --md-outline: #79747E;
+        --md-shadow: rgba(0, 0, 0, 0.2);
         
         /* Elevations */
         --md-elevation-1: 0 1px 2px 0 var(--md-shadow);
@@ -60,18 +65,18 @@ const { description, title } = Astro.props
         --md-elevation-5: 0 8px 24px 0 var(--md-shadow);
       }
 
-      /* Material Design 3 Color System - Dark Theme */
+      /* Material Design 3 Color System - Dark Theme (Deep Violet) */
       .dark {
-        --md-primary: #FFB4A2;
-        --md-secondary: #E7D7CF;
-        --md-tertiary: #FFD4A3;
-        --md-surface: #1C1B1F;
+        --md-primary: #9965f4;
+        --md-secondary: #CCC2DC;
+        --md-tertiary: #EFB8C8;
+        --md-surface: #141218;
         --md-surface-variant: #49454F;
-        --md-background: #1C1B1F;
+        --md-background: #141218;
         --md-on-surface: #E6E1E5;
-        --md-on-primary: #5A1A0D;
+        --md-on-primary: #381E72;
         --md-outline: #938F99;
-        --md-shadow: rgba(0, 0, 0, 0.3);
+        --md-shadow: rgba(0, 0, 0, 0.4);
         
         /* Elevations for dark mode */
         --md-elevation-1: 0 1px 2px 0 var(--md-shadow);
@@ -85,6 +90,8 @@ const { description, title } = Astro.props
         font-family: 'Space Grotesk', system-ui, sans-serif;
         scroll-behavior: smooth;
         background: var(--md-background);
+        overflow-x: hidden;
+        width: 100%;
       }
 
       body {
@@ -92,7 +99,7 @@ const { description, title } = Astro.props
         display: flex;
         flex-direction: column;
         min-height: 100vh;
-        overscroll-behavior: none;
+        width: 100%;
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -101,17 +108,9 @@ const { description, title } = Astro.props
         }
       }
 
-      /* Material Design 3 Surface Gradient */
+      /* Material Design 3 Surface */
       .bg-surface {
         background: var(--md-surface);
-      }
-
-      .bg-gradient-subtle {
-        background: linear-gradient(180deg, 
-          var(--md-background) 0%, 
-          var(--md-surface) 50%, 
-          var(--md-surface-variant) 100%
-        );
       }
 
       /* Animaciones de scroll */
@@ -140,6 +139,7 @@ const { description, title } = Astro.props
         line-height: 110%;
         margin: 0;
         width: 100%;
+        max-width: 100%;
         color: color-mix(in srgb, var(--md-on-surface) 20%, transparent);
         background: linear-gradient(to right, var(--md-on-surface), var(--md-on-surface)) no-repeat;
         -webkit-background-clip: text;
@@ -150,6 +150,8 @@ const { description, title } = Astro.props
         display: flex;
         position: relative;
         cursor: pointer;
+        overflow: hidden;
+        word-wrap: break-word;
       }
       
       @media (min-width: 768px) {
