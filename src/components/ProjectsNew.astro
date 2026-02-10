@@ -9,6 +9,14 @@ import NodeJS from "./icons/NodeJS.astro"
 import Go from "./icons/Go.astro"
 import Redis from "./icons/Redis.astro"
 import Express from "./icons/Express.astro"
+import { useTranslations } from "@/i18n/utils"
+
+interface Props {
+  lang?: string
+}
+
+const { lang = 'es' } = Astro.props
+const t = useTranslations(lang as 'es' | 'en')
 
 const TAGS = {
   NEXT: {
@@ -48,35 +56,31 @@ const TAGS = {
   }
 }
 
+const projectsTranslations = t('projects.items')
+
 const PROJECTS = [
   {
-    title: "Tonolele - Cancionero digital de musica cristiana",
-    description:
-      "Plataforma digital para músicos cristianos con editor interactivo de acordes. Soporta transposición automática con números romanos, notación latina y americana. Organiza canciones en cancioneros, busca por título, imprime colecciones completas. Sincronización en la nube con Vercel KV, temas claro/oscuro y diseño responsivo. Creada con React.",
+    ...projectsTranslations[0],
     link: "https://tonolele.vercel.app/",
     github: "https://github.com/andresdal/Tonolele2",
     image: "/projects/tonolele2.png",
     tags: [TAGS.REACT],
   },
   {
-    title: "One Way - Ecommerce de indumentaria",
-    description:
-      "E-commerce de indumentaria creada con React y NodeJS. Integración de pagos con Mercado Pago y envíos con Correo Argentino. Implementación de CI/CD con GitHub Actions, Vercel y Railway. Desarrollo desde cero, incluyendo diseño responsivo y optimización para SEO.",
+    ...projectsTranslations[1],
     link: "https://oneway.ar/",
     github: "https://github.com/andresdal/one-way-store",
     image: "/projects/oneway2.png",
     tags: [TAGS.REACT, TAGS.EXPRESS],
   },
   {
-    title: "Script Check Jobs",
-    description: "Sistema de monitoreo del estado de API's y bases de datos criticas para el correcto funcionamiento de la plataforma de NeptuneAds. Implementado con Golang. Permite la detección temprana de fallos y la generación de alertas para el equipo de desarrollo a través de un canal de Slack.",
+    ...projectsTranslations[2],
     github: "https://github.com/andresdal/script_check_jobs",
     image: "/projects/script_check_jobs2.png",
     tags: [TAGS.GO, TAGS.REDIS],
   },
   {
-    title: "Importador de Shopify",
-    description: "Servicio de automatizacion de importacion de productos a Shopify. Permite a los usuarios importar grandes catálogos de productos a su tienda Shopify de manera rápida y eficiente de otras plataformas como Amazon y Aliexpress por medio de web scraping, utilizando la API de Shopify para crear productos, variantes e imágenes. Implementado con NodeJS y Express.",
+    ...projectsTranslations[3],
     github: "https://github.com/andresdal/shopify",
     image: "/projects/shopify2.png",
     tags: [TAGS.EXPRESS],
@@ -104,7 +108,7 @@ const PROJECTS = [
           <h3 class="project-title">{title}</h3>
           
           <div class="project-tags">
-            {tags.map((tag) => (
+            {tags.map((tag: any) => (
               <span class={`project-tag ${tag.class}`}>
                 <tag.icon class="size-4" />
                 {tag.name}
@@ -328,7 +332,7 @@ const PROJECTS = [
   }
   
   .tag-go {
-    background: #00add8;
+    background: #0b95bb;
     color: #ffffff;
   }
   
@@ -348,8 +352,8 @@ const PROJECTS = [
   }
   
   .tag-express {
-    background: var(--md-on-surface);
-    color: var(--md-surface);
+    background: #262626;
+    color: #ffffff;
   }
 
   .project-description {

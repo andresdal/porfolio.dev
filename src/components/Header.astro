@@ -1,24 +1,29 @@
 ---
 import ThemeToggle from "@/components/ThemeToggle.astro"
+import LanguageSelector from "@/components/LanguageSelector.astro"
+import { getLangFromUrl, useTranslations } from "@/i18n/utils"
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
 
 const navItems = [
   {
-    title: "Experiencia",
+    title: t('nav.experience'),
     label: "experiencia",
-    url: "/#experiencia",
+    url: `${lang === 'en' ? '/en' : ''}/#experiencia`,
   },
   {
-    title: "Proyectos",
+    title: t('nav.projects'),
     label: "proyectos",
-    url: "/#proyectos",
+    url: `${lang === 'en' ? '/en' : ''}/#proyectos`,
   },
   {
-    title: "Sobre mí",
+    title: t('nav.about'),
     label: "sobre-mi",
-    url: "/#sobre-mi",
+    url: `${lang === 'en' ? '/en' : ''}/#sobre-mi`,
   },
   {
-    title: "Contacto",
+    title: t('hero.contact'),
     label: "contacto",
     url: "mailto:andres.dalesssandro@gmail.com",
   },
@@ -47,7 +52,10 @@ const navItems = [
         <span class="selection-indicator"></span>
       </div>
     </nav>
-    <ThemeToggle />
+    <div class="header-actions">
+      <LanguageSelector />
+      <ThemeToggle />
+    </div>
   </div>
 </header>
 
@@ -211,6 +219,12 @@ const navItems = [
     width: 100%;
     max-width: 100%;
     justify-content: center;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
   }
 
   .nav-container {

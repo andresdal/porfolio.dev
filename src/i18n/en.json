@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "title": "Andrés D'Alessandro's Portfolio - Backend Developer",
+    "description": "Hire Andrés D'Alessandro to improve, optimize, and scale your backend systems. Available for freelance projects or full-time employment."
+  },
+  "nav": {
+    "experience": "Experience",
+    "projects": "Projects",
+    "about": "About"
+  },
+  "hero": {
+    "badge": "Open to work",
+    "title": "HEY, I'M ANDRÉS",
+    "subtitle": "BACKEND DEVELOPER",
+    "stack": "PHP • LARAVEL • GO • REACT",
+    "description": "<strong>Advanced Information Systems Engineering student</strong> from Buenos Aires, Argentina. Specialized in backend development with PHP, Laravel, Go, Javascript, and React, focused on process optimization and building scalable architectures.",
+    "contact": "Contact me",
+    "linkedin": "LinkedIn"
+  },
+  "sections": {
+    "experience": "Experience",
+    "projects": "Projects",
+    "about": "About me"
+  },
+  "experience": {
+    "items": [
+      {
+        "date": "April 2024 - Present",
+        "title": "Software Engineer",
+        "company": "NeptuneAds",
+        "description": "I develop and maintain solutions mainly through PHP, Laravel, Blade, Vue, Javascript, and Go. I'm responsible for the client dashboard and creating landing pages for advertising. I solved performance and scalability issues, improving user experience and system response time by 80%."
+      },
+      {
+        "date": "November 2024 - January 2026",
+        "title": "FullStack Web Developer",
+        "company": "One Way",
+        "description": "I created and maintained an e-commerce website for clothing sales from scratch using Javascript, React, and NodeJS. I integrated payments through the Mercado Pago API and shipping with the Correo Argentino API. I implemented CI/CD through GitHub Actions, Vercel, and Railway."
+      },
+      {
+        "date": "June 2023–October 2023",
+        "title": "Cybersecurity Intern (Temporary Contract)",
+        "company": "HSBC",
+        "description": "I monitored and managed DLP (Data Loss Prevention) policies, identifying and mitigating potential information leakage risks. I tracked third parties, ensuring compliance with security protocols. I facilitated international communication by translating documents from Spanish to English, ensuring 100% accuracy. I cross-referenced and analyzed large volumes of data in Excel spreadsheets to identify patterns and anomalies, improving decision-making in the security area."
+      }
+    ]
+  },
+  "projects": {
+    "items": [
+      {
+        "title": "Tonolele - Christian music digital songbook",
+        "description": "Digital platform for Christian musicians with interactive chord editor. Supports automatic transposition with Roman numerals, Latin and American notation. Organizes songs in songbooks, searches by title, prints complete collections. Cloud synchronization with Vercel KV, light/dark themes and responsive design. Built with React."
+      },
+      {
+        "title": "One Way - Clothing E-commerce",
+        "description": "Clothing e-commerce created with React and NodeJS. Payment integration with Mercado Pago and shipping with Correo Argentino. CI/CD implementation with GitHub Actions, Vercel, and Railway. Development from scratch, including responsive design and SEO optimization."
+      },
+      {
+        "title": "Script Check Jobs",
+        "description": "Monitoring system for the status of critical APIs and databases for the proper functioning of the NeptuneAds platform. Implemented with Golang. Enables early fault detection and alert generation for the development team through a Slack channel."
+      },
+      {
+        "title": "Shopify Importer",
+        "description": "Product import automation service to Shopify. Allows users to import large product catalogs to their Shopify store quickly and efficiently from other platforms like Amazon and Aliexpress through web scraping, using the Shopify API to create products, variants, and images. Implemented with NodeJS and Express."
+      }
+    ]
+  },
+  "about": {
+    "paragraphs": [
+      "I'm Andrés D'Alessandro, a Systems Engineering student at UTN with experience in web, frontend, and backend development <strong>applying SOLID principles and artificial intelligence</strong>.",
+      "I enjoy playing the piano, running, mountaineering, and drawing in my free time. I do <strong>volunteer work</strong> at the Presbyterian Church San Andrés in Temperley, helping on the administrative committee and playing the piano on Sundays. I'm enthusiastic about volleyball, music, technology, and economics.",
+      "Among my projects, I highlight the One Way e-commerce website, where <strong>I learned to work with React through AI and integrate with electronic payment APIs (Mercado Pago) and shipping APIs (Correo Argentino) in a real case</strong>.",
+      "I also implemented new features and performed maintenance on NeptuneAds' backoffice systems with PHP and Laravel.",
+      "What I focus on most is <strong>programming logic</strong>, something I've been refining throughout my career and work. This allows me to adapt to any language quickly, combined with my self-taught learning and the use of AI with precise <strong>prompt engineering</strong>."
+    ]
+  },
+  "footer": {
+    "credits": "Almost all rights reserved © 2026"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "title": "Porfolio de Andrés D'Alessandro - Desarrollador Backend",
+    "description": "Contrata a Andrés D'Alessandro para mejorar, optimizar y escalar tus sistemas backend. Disponible para proyectos freelance o empleo a tiempo completo."
+  },
+  "nav": {
+    "experience": "Experiencia",
+    "projects": "Proyectos",
+    "about": "Sobre mí"
+  },
+  "hero": {
+    "badge": "Disponible para trabajar",
+    "title": "HEY, SOY ANDRÉS",
+    "subtitle": "BACKEND DEVELOPER",
+    "stack": "PHP • LARAVEL • GO • REACT",
+    "description": "<strong>Estudiante avanzado de Ingeniería en Sistemas de Información</strong> de Buenos Aires, Argentina. Especializado en el desarrollo backend con PHP, Laravel, Go, Javascript y React, enfocado en la optimización de procesos y la construcción de arquitecturas escalables.",
+    "contact": "Contáctame",
+    "linkedin": "LinkedIn"
+  },
+  "sections": {
+    "experience": "Experiencia",
+    "projects": "Proyectos",
+    "about": "Sobre mí"
+  },
+  "experience": {
+    "items": [
+      {
+        "date": "Abril 2024 - Actualidad",
+        "title": "Ingeniero de Software",
+        "company": "NeptuneAds",
+        "description": "Desarrollo y mantengo soluciones principalmente a traves de PHP, Laravel, Blade, Vue, Javascript y Go. Soy responsable de el dashboard de clientes y de la creacion de paginas landing para publicidad. Solucioné problemas de rendimiento y escalabilidad, mejorando la experiencia del usuario y el tiempo de respuesta del sistema en un 80%."
+      },
+      {
+        "date": "Noviembre 2024 - Enero 2026",
+        "title": "Desarrollador Web FullStack",
+        "company": "One Way",
+        "description": "Creé y mantuve una página web de e-commerce de venta de indumentaria desde cero con el uso de Javascript, React y NodeJS. Integré los pagos por medio de la API de Mercado Pago y los envíos con la API de Correo Argentino. Implementé CI/CD a través de GitHub Actions, Vercel y Railway."
+      },
+      {
+        "date": "Junio 2023–Octubre 2023",
+        "title": "Pasante en Ciberseguridad (Contrato Temporal)",
+        "company": "HSBC",
+        "description": "Monitoreé y gestioné políticas de DLP (Data Loss Prevention), identificando y mitigando posibles riesgos de fuga de información. Realicé el seguimiento de terceros, asegurando el cumplimiento de los protocolos de seguridad. Facilité la comunicación internacional mediante la traducción de documentos del español al inglés, asegurando la precisión en un 100% de los casos. Crucé y analicé grandes volúmenes de datos en planillas de Excel para identificar patrones y anomalías, mejorando la toma de decisiones en el área de seguridad."
+      }
+    ]
+  },
+  "projects": {
+    "items": [
+      {
+        "title": "Tonolele - Cancionero digital de musica cristiana",
+        "description": "Plataforma digital para músicos cristianos con editor interactivo de acordes. Soporta transposición automática con números romanos, notación latina y americana. Organiza canciones en cancioneros, busca por título, imprime colecciones completas. Sincronización en la nube con Vercel KV, temas claro/oscuro y diseño responsivo. Creada con React."
+      },
+      {
+        "title": "One Way - Ecommerce de indumentaria",
+        "description": "E-commerce de indumentaria creada con React y NodeJS. Integración de pagos con Mercado Pago y envíos con Correo Argentino. Implementación de CI/CD con GitHub Actions, Vercel y Railway. Desarrollo desde cero, incluyendo diseño responsivo y optimización para SEO."
+      },
+      {
+        "title": "Script Check Jobs",
+        "description": "Sistema de monitoreo del estado de API's y bases de datos criticas para el correcto funcionamiento de la plataforma de NeptuneAds. Implementado con Golang. Permite la detección temprana de fallos y la generación de alertas para el equipo de desarrollo a través de un canal de Slack."
+      },
+      {
+        "title": "Importador de Shopify",
+        "description": "Servicio de automatizacion de importacion de productos a Shopify. Permite a los usuarios importar grandes catálogos de productos a su tienda Shopify de manera rápida y eficiente de otras plataformas como Amazon y Aliexpress por medio de web scraping, utilizando la API de Shopify para crear productos, variantes e imágenes. Implementado con NodeJS y Express."
+      }
+    ]
+  },
+  "about": {
+    "paragraphs": [
+      "Soy Andrés D'Alessandro, un estudiante de Ingeniería en Sistemas en la UTN con experiencia en desarrollo web, frontend y backend <strong>aplicando principios SOLID e inteligencia artificial</strong>.",
+      "Me gusta tocar el piano, salir a correr, hacer montañismo y dibujar en mi tiempo libre. Hago un <strong>voluntariado</strong> en la Iglesia Presbiteriana San Andrés de Temperley, ayudando en el comite administrativo y tocando el piano los domingos. Soy un entusiasta del voley, la musica, la tecnología y la economía.",
+      "Entre mis proyectos, destaco la página de comercio electronico One Way, donde <strong>aprendí a trabajar con React a través de la IA y a integrarme con APIs de pagos electricos (Mercado Pago) y de envios (Correo Argentino) en un caso real</strong>.",
+      "Tambíen implementé nuevas funcionalidades y realicé mantenimiento de los sistemas backoffice de NeptuneAds con PHP y Laravel.",
+      "En lo que más hago foco es en la <strong>lógica de programación</strong>, algo que fuí puliendo a lo largo de mi carrera y mi trabajo. Eso me permite adaptarme a cualquier lenguaje rápidamente, sumado a mi aprendizaje autodidacta y al uso de la IA con un preciso <strong>prompt engineering</strong>."
+    ]
+  },
+  "footer": {
+    "credits": "Casi todos los derechos reservados © 2026"
+  }
+}

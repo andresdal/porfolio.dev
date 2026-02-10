@@ -1,9 +1,18 @@
 ---
-const personalImageAlt = "Andrés D'Alessandro"
 import Badge from "@/components/Badge.astro"
 import LinkedInIcon from "@/components/icons/LinkedIn.astro"
 import MailIcon from "@/components/icons/Mail.astro"
 import SocialPill from "@/components/SocialPill.astro"
+import { useTranslations } from "@/i18n/utils"
+
+interface Props {
+  lang?: string
+}
+
+const { lang = 'es' } = Astro.props
+const t = useTranslations(lang as 'es' | 'en')
+
+const personalImageAlt = "Andrés D'Alessandro"
 ---
 
 <div class="hero-container">
@@ -24,32 +33,29 @@ import SocialPill from "@/components/SocialPill.astro"
         target="_blank"
         rel="noopener"
       >
-        <Badge>Disponible para trabajar</Badge>
+        <Badge>{t('hero.badge')}</Badge>
       </a>
     </div>
 
     <!-- Títulos con efecto de texto -->
     <div class="hero-titles">
       <h1 class="text-effect hero-text-1">
-        HEY, SOY ANDRÉS
-        <span>HEY, SOY ANDRÉS</span>
+        {t('hero.title')}
+        <span>{t('hero.title')}</span>
       </h1>
       <h2 class="text-effect hero-text-2">
-        BACKEND DEVELOPER
-        <span>BACKEND DEVELOPER</span>
+        {t('hero.subtitle')}
+        <span>{t('hero.subtitle')}</span>
       </h2>
       <h3 class="text-effect hero-text-3">
-        PHP • LARAVEL • GO • REACT
-        <span>PHP • LARAVEL • GO • REACT</span>
+        {t('hero.stack')}
+        <span>{t('hero.stack')}</span>
       </h3>
     </div>
 
     <!-- Descripción con animación -->
     <div class="hero-description-wrapper">
-      <p class="hero-description">
-        <strong class="hero-highlight"
-          >Estudiante avanzado de Ingeniería en Sistemas de Información</strong
-        > de Buenos Aires, Argentina. Especializado en el desarrollo backend con PHP, Laravel, Go, Javascript y React, enfocado en la optimización de procesos y la construcción de arquitecturas escalables.
+      <p class="hero-description" set:html={t('hero.description')}>
       </p>
     </div>
 
@@ -57,11 +63,11 @@ import SocialPill from "@/components/SocialPill.astro"
     <nav class="hero-social">
       <SocialPill href="mailto:andres.dalesssandro@gmail.com">
         <MailIcon class="size-4" />
-        Contáctame
+        {t('hero.contact')}
       </SocialPill>
       <SocialPill href="https://www.linkedin.com/in/andresdalessandro/">
         <LinkedInIcon class="size-4" />
-        LinkedIn
+        {t('hero.linkedin')}
       </SocialPill>
     </nav>
   </div>
@@ -292,6 +298,16 @@ import SocialPill from "@/components/SocialPill.astro"
 
   .hero-highlight {
     color: var(--md-primary);
+    font-weight: 700;
+  }
+
+  .hero-description strong {
+    color: var(--md-primary) !important;
+    font-weight: 700;
+  }
+
+  .hero-description :global(strong) {
+    color: var(--md-primary) !important;
     font-weight: 700;
   }
 

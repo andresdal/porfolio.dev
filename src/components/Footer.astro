@@ -1,4 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from "@/i18n/utils"
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
 const currentYear = new Date().getFullYear()
 ---
 
@@ -9,17 +13,17 @@ const currentYear = new Date().getFullYear()
     <div class="footer-grid">
       <span class="footer-text">
         &copy; {currentYear}
-        <a href="/" class="footer-link">Andrés D'Alessandro</a>. 
-        Todos los derechos reservados
+        <a href={lang === 'en' ? '/en' : '/'} class="footer-link">Andrés D'Alessandro</a>. 
+        {t('footer.credits').replace('© 2026', '')}
       </span>
       
       <ul class="footer-links">
         <li>
-          <a href="/#sobre-mi" class="footer-link">Sobre mí</a>
+          <a href={`${lang === 'en' ? '/en' : ''}/#sobre-mi`} class="footer-link">{t('nav.about')}</a>
         </li>
         <li>
           <a id="contacto" href="mailto:andres.dalesssandro@gmail.com" class="footer-link">
-            Contacto
+            {t('hero.contact')}
           </a>
         </li>
       </ul>

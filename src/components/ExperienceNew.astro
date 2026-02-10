@@ -1,33 +1,20 @@
 ---
 import ExperienceItemNew from "./ExperienceItemNew.astro"
+import { useTranslations } from "@/i18n/utils"
 
-const EXPERIENCE = [
-  {
-    date: "Abril 2024 - Actualidad",
-    title: "Ingeniero de Software",
-    company: "NeptuneAds",
-    description:
-      "Desarrollo y mantengo soluciones principalmente a traves de PHP, Laravel, Blade, Vue, Javascript y Go. Soy responsable de el dashboard de clientes y de la creacion de paginas landing para publicidad. Solucioné problemas de rendimiento y escalabilidad, mejorando la experiencia del usuario y el tiempo de respuesta del sistema en un 80%.",
-  },
-  {
-    date: "Noviembre 2024 - Enero 2026",
-    title: "Desarrollador Web FullStack",
-    company: "One Way",
-    description:
-      "Creé y mantuve una página web de e-commerce de venta de indumentaria desde cero con el uso de Javascript, React y NodeJS. Integré los pagos por medio de la API de Mercado Pago y los envíos con la API de Correo Argentino. Implementé CI/CD a través de GitHub Actions, Vercel y Railway.",
-  },
-  {
-    date: "Junio 2023–Octubre 2023",
-    title: "Pasante en Ciberseguridad (Contrato Temporal)",
-    company: "HSBC",
-    description: "Monitoreé y gestioné políticas de DLP (Data Loss Prevention), identificando y mitigando posibles riesgos de fuga de información. Realicé el seguimiento de terceros, asegurando el cumplimiento de los protocolos de seguridad. Facilité la comunicación internacional mediante la traducción de documentos del español al inglés, asegurando la precisión en un 100% de los casos. Crucé y analicé grandes volúmenes de datos en planillas de Excel para identificar patrones y anomalías, mejorando la toma de decisiones en el área de seguridad."
-  }
-]
+interface Props {
+  lang?: string
+}
+
+const { lang = 'es' } = Astro.props
+const t = useTranslations(lang as 'es' | 'en')
+
+const EXPERIENCE = t('experience.items')
 ---
 
 <div class="experience-container">
   {
-    EXPERIENCE.map((experience, index) => (
+    EXPERIENCE.map((experience: any, index: number) => (
       <div class="experience-item" data-index={index}>
         <ExperienceItemNew {...experience} />
       </div>
