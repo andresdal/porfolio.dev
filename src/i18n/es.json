@@ -60,7 +60,7 @@
       },
       {
         "title": "Importador de Shopify",
-        "description": "Servicio de automatizacion de importacion de productos a Shopify. Permite a los usuarios importar grandes catálogos de productos a su tienda Shopify de manera rápida y eficiente de otras plataformas como Amazon y Aliexpress por medio de web scraping, utilizando la API de Shopify para crear productos, variantes e imágenes. Implementado con NodeJS y Express."
+        "description": "Servicio de automatización de importación de productos a Shopify. Permite a los usuarios importar grandes catálogos de productos a su tienda Shopify de manera rápida y eficiente de otras plataformas como Amazon y Aliexpress por medio de web scraping, utilizando la API de Shopify para crear productos, variantes e imágenes. Implementado con NodeJS y Express."
       }
     ]
   },
