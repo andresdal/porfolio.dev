@@ -59,28 +59,35 @@ const TAGS = {
 const projectsTranslations = t('projects.items')
 
 const PROJECTS = [
-  {
+{
     ...projectsTranslations[0],
+    link: "https://oficiosya.vercel.app/",
+    github: "https://github.com/andresdal/oficiosYa",
+    image: "/projects/oficiosya.png",
+    tags: [TAGS.REACT, TAGS.NEXT],
+  },
+  {
+    ...projectsTranslations[1],
     link: "https://tonolele.vercel.app/",
     github: "https://github.com/andresdal/Tonolele2",
     image: "/projects/tonolele2.png",
     tags: [TAGS.REACT],
   },
   {
-    ...projectsTranslations[1],
+    ...projectsTranslations[2],
     link: "https://oneway.ar/",
     github: "https://github.com/andresdal/one-way-store",
     image: "/projects/oneway2.png",
     tags: [TAGS.REACT, TAGS.EXPRESS],
   },
   {
-    ...projectsTranslations[2],
+    ...projectsTranslations[3],
     github: "https://github.com/andresdal/script_check_jobs",
     image: "/projects/script_check_jobs2.png",
     tags: [TAGS.GO, TAGS.REDIS],
   },
   {
-    ...projectsTranslations[3],
+    ...projectsTranslations[4],
     github: "https://github.com/andresdal/shopify",
     image: "/projects/shopify2.png",
     tags: [TAGS.EXPRESS],
