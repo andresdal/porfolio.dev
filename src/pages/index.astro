@@ -10,6 +10,8 @@ import ProjectsNew from "@/components/ProjectsNew.astro"
 import SectionContainerNew from "@/components/SectionContainerNew.astro"
 import Hero from "@/components/Hero.astro"
 import TitleSectionNew from "@/components/TitleSectionNew.astro"
+import Contact from "@/components/Contact.astro"
+import MailIcon from "@/components/icons/Mail.astro"
 import { useTranslations } from "@/i18n/utils"
 
 const lang = 'es';
@@ -46,6 +48,13 @@ const t = useTranslations(lang);
           <ProfileCheck class="size-8" />
         </TitleSectionNew>
         <AboutMeNew lang={lang} />
+      </SectionContainerNew>
+
+      <SectionContainerNew id="contacto">
+        <TitleSectionNew title={t('sections.contact')}>
+          <MailIcon class="size-8" />
+        </TitleSectionNew>
+        <Contact lang={lang} />
       </SectionContainerNew>
     </div>
   </main>

@@ -20,7 +20,15 @@
   "sections": {
     "experience": "Experiencia",
     "projects": "Proyectos",
-    "about": "Sobre mí"
+    "about": "Sobre mí",
+    "contact": "Contacto"
+  },
+  "contact": {
+    "title": "¿Trabajamos juntos?",
+    "description": "Si estás interesado en trabajar conmigo no dudes en contactarme. Estoy disponible para proyectos freelance o empleo a tiempo completo.",
+    "phone": "Teléfono",
+    "email": "Email",
+    "linkedin": "LinkedIn"
   },
   "experience": {
     "items": [

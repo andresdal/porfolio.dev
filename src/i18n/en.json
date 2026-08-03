@@ -20,7 +20,15 @@
   "sections": {
     "experience": "Experience",
     "projects": "Projects",
-    "about": "About me"
+    "about": "About me",
+    "contact": "Contact"
+  },
+  "contact": {
+    "title": "Let's work together?",
+    "description": "If you're interested in working with me or just want to chat about technology, feel free to contact me. I'm available for freelance projects or full-time employment.",
+    "phone": "Phone",
+    "email": "Email",
+    "linkedin": "LinkedIn"
   },
   "experience": {
     "items": [

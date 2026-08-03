@@ -1,0 +1,203 @@
+---
+import PhoneIcon from "@/components/icons/Phone.astro"
+import MailIcon from "@/components/icons/Mail.astro"
+import LinkedInIcon from "@/components/icons/LinkedIn.astro"
+import { useTranslations } from "@/i18n/utils"
+
+interface Props {
+  lang?: string
+}
+
+const { lang = 'es' } = Astro.props
+const t = useTranslations(lang as 'es' | 'en')
+---
+
+<article class="contact-container">
+  <div class="contact-content">
+    <h3 class="contact-title">{t('contact.title')}</h3>
+    <p class="contact-description">{t('contact.description')}</p>
+    
+    <div class="contact-items">
+      <a href="tel:+5491122334455" class="contact-item">
+        <div class="contact-icon">
+          <PhoneIcon class="icon" />
+        </div>
+        <div class="contact-info">
+          <span class="contact-label">{t('contact.phone')}</span>
+          <span class="contact-value">+54 9 11 5998-3982</span>
+        </div>
+      </a>
+
+      <a href="mailto:andres.dalesssandro@gmail.com" class="contact-item" id="email-contact" data-email="andres.dalesssandro@gmail.com" data-copied-text="{lang === 'en' ? '✓ Copied' : '✓ Copiado'}">
+        <div class="contact-icon">
+          <MailIcon class="icon" />
+        </div>
+        <div class="contact-info">
+          <span class="contact-label" id="email-label">{t('contact.email')}</span>
+          <span class="contact-value">andres.dalesssandro@gmail.com</span>
+        </div>
+      </a>
+
+      <a href="https://www.linkedin.com/in/andresdalessandro/" target="_blank" rel="noopener noreferrer" class="contact-item">
+        <div class="contact-icon">
+          <LinkedInIcon class="icon" />
+        </div>
+        <div class="contact-info">
+          <span class="contact-label">{t('contact.linkedin')}</span>
+          <span class="contact-value">linkedin.com/in/andresdalessandro</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</article>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const emailContact = document.getElementById('email-contact') as HTMLAnchorElement;
+    const emailLabel = document.getElementById('email-label') as HTMLElement;
+    
+    if (emailContact && emailLabel) {
+      const email = emailContact.getAttribute('data-email') || '';
+      const copiedText = emailContact.getAttribute('data-copied-text') || '✓ Copiado';
+      const originalText = emailLabel.textContent || '';
+      
+      emailContact.addEventListener('click', async (e) => {
+        // En desktop (mayor a 768px), copiar al portapapeles
+        if (window.innerWidth >= 768) {
+          e.preventDefault();
+          
+          try {
+            await navigator.clipboard.writeText(email);
+            
+            // Feedback visual
+            emailLabel.textContent = copiedText;
+            emailContact.style.borderColor = 'var(--md-primary)';
+            emailContact.style.background = 'var(--md-primary-container)';
+            
+            setTimeout(() => {
+              emailLabel.textContent = originalText;
+              emailContact.style.borderColor = '';
+              emailContact.style.background = '';
+            }, 2000);
+          } catch (err) {
+            console.error('Error al copiar:', err);
+            // Si falla, permitir que abra el mailto
+            window.location.href = emailContact.href;
+          }
+        }
+        // En mobile (menor a 768px), permitir el comportamiento normal de mailto
+      });
+    }
+  });
+</script>
+
+<style>
+  .contact-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .contact-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .contact-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--md-on-surface);
+    margin: 0;
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .contact-title {
+      font-size: 2.5rem;
+    }
+  }
+
+  .contact-description {
+    font-size: 1.125rem;
+    line-height: 1.75;
+    color: var(--md-on-surface);
+    opacity: 0.8;
+    text-align: center;
+    margin: 0;
+  }
+
+  .contact-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--md-surface-container);
+    border-radius: 16px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    cursor: pointer;
+  }
+
+  .contact-item:hover {
+    background: var(--md-surface-container-high);
+    border-color: var(--md-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .contact-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: var(--md-primary-container);
+    border-radius: 12px;
+    flex-shrink: 0;
+  }
+
+  .contact-icon .icon {
+    width: 24px;
+    height: 24px;
+    color: var(--md-on-primary-container);
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .contact-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--md-on-surface);
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .contact-value {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--md-on-surface);
+    word-break: break-all;
+  }
+
+  @media (min-width: 768px) {
+    .contact-value {
+      font-size: 1.125rem;
+    }
+  }
+</style>
