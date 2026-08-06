@@ -59,7 +59,7 @@
         "description": "Platform for searching and hiring professional services. Allows users to find professionals in various categories, compare prices, and filter by location. Features an integrated chat, notification system, and service quality rating through a star system. Developed with React and NextJS, deployed on Vercel."
       },
       {
-        "title": "Tonolele - Christian music digital songbook",
+        "title": "Presbify - Christian music digital songbook",
         "description": "Digital platform for Christian musicians with interactive chord editor. Supports automatic transposition with Roman numerals, Latin and American notation. Organizes songs in songbooks, searches by title, prints complete collections. Cloud synchronization with Vercel KV, light/dark themes and responsive design. Built with React."
       },
       {

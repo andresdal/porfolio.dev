@@ -59,7 +59,7 @@
         "description": "Plataforma para la búsqueda y contratación de servicios profesionales. Permite a los usuarios encontrar profesionales en diversas categorías, comparar precios y filtrar por ubicación. Cuenta con un chat integrado, sistema de notificaciones y calificación de la calidad del servicio mediante un sistema de estrellas. Desarrollado con React y NextJS, desplegado en Vercel."
       },
       {
-        "title": "Tonolele - Cancionero digital de musica cristiana",
+        "title": "Presbify - Cancionero digital de musica cristiana",
         "description": "Plataforma digital para músicos cristianos con editor interactivo de acordes. Soporta transposición automática con números romanos, notación latina y americana. Organiza canciones en cancioneros, busca por título, imprime colecciones completas. Sincronización en la nube con Vercel KV, temas claro/oscuro y diseño responsivo. Creada con React."
       },
       {
